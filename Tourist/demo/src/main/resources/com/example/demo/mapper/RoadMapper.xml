@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RoadMapper">
+    <select id="roadlist" resultType="com.example.demo.pojo.Road">
+        select * from  road
+        <where>
+            <if test="location!=null">
+                and location like CONCAT('%',#{location},'%')
+            </if>
+            <if test="status!=null">
+                and status=#{status}
+            </if>
+        </where>
+    </select>
+</mapper>

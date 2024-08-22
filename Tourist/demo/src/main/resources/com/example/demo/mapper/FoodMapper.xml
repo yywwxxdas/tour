@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FoodMapper">
+    <select id="foodlist" resultType="com.example.demo.pojo.Food">
+        select * from entertainment where type="餐饮"
+        <where>
+            <if test="name!=null">
+                and name like CONCAT('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+    <select id="playlist" resultType="com.example.demo.pojo.Food">
+        select * from entertainment where type="娱乐"
+        <where>
+            <if test="name!=null">
+                and name like CONCAT('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

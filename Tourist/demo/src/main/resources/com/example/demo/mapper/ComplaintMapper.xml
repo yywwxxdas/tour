@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ComplaintMapper">
+    <insert id="add" parameterType="com.example.demo.pojo.Complaint">
+        insert into complaint(comname,evaluate,grade,img,content,createtime) values (#{comname},#{evaluate},#{grade},#{img},#{content},#{createtime})
+    </insert>
+    <select id="list" resultType="com.example.demo.pojo.Complaint">
+        select * from complaint
+        <where>
+            <if test="status!=null">
+                and status=#{status}
+            </if>
+        and comname=#{traname}
+        </where>
+    </select>
+    <delete id="delete" parameterType="com.example.demo.pojo.Complaint">
+        delete from complaint where id = #{id}
+    </delete>
+</mapper>

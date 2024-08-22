@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.EmergencyMapper">
+    <resultMap id="sad" type="com.example.demo.pojo.Emergency">
+        <result column="create_time" property="createtime"/>
+        <result column="update_time" property="updatetime"/>
+        <result column="createuser_id" property="createuserid"/>
+    </resultMap>
+    <select id="emerlist" resultMap="sad">
+        select * from emergency
+    </select>
+</mapper>

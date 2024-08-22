@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TravelerMapper">
+    <select id="traselect" resultType="com.example.demo.pojo.Traveler">
+        select * from traveler
+        <where>
+            <if test="traname!=null">
+                and traname=#{traname}
+            </if>
+        </where>
+    </select>
+    <insert id="logininsert1" parameterType="com.example.demo.pojo.Traveler">
+        insert into traveler(traname,trapassword) values (#{traname},#{trapassword})
+    </insert>
+    <update id="updatetra" parameterType="com.example.demo.pojo.Traveler">
+        update traveler set name=#{name},sex=#{sex},phone=#{phone},idcard=#{idcard} where id=#{id}
+    </update>
+    <update id="updatePwd" parameterType="com.example.demo.pojo.Traveler">
+        update traveler set trapassword=#{newPwd} where id=#{id}
+    </update>
+    <update id="updateAvatar" parameterType="com.example.demo.pojo.Traveler">
+        update traveler set image=#{avatarUrl} where id=#{id}
+    </update>
+</mapper>
